@@ -5,13 +5,13 @@ const sequelize = new Sequelize('dbase_messenger', 'root', 'BurningPenguin25b', 
     dialect: 'mysql' ,
 });
 
-async function start() {
+(async function start() {
     try {
         await sequelize.authenticate();
         console.log('Connection has been established successfully.');
     } catch (error) {
         console.error('Unable to connect to the database:', error);
     }
-}
-start()
+})()
+
 
