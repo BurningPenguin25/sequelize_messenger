@@ -2,24 +2,28 @@ const {User} = require('./models/index.js')
 
 class dataUser{
 
-// async userID(i){
-//     return await User.findByPk(i)
+//  userID(i){
+//     return User.findByPk(i)
 // }
 //
-// async userCreate(dt){ // отправляет в базу V
-//     return await User.create(dt)
+// userCreate(dt){ // отправляет в базу V
+//     return User.create(dt)
 // }
 //
-// async DeleteString(del){
-//     return await User.destroy(del)
+//  DeleteString(del){
+//     return User.destroy(del)
 // }
 
-// async FindAllStrings(fa){
-//     return await User.findAll(fa)
+//  FindAllStrings(fa){
+//     return User.findAll(fa)
 // }
 
-    async UpdateString(upd){
-        return User.update(upd)
+    UpdateString(upd){
+        return User.update(upd).then((data)=>{
+            console.log(data)
+        }).catch((err)=>{
+            console.log(err)
+        })
     }
 
 }
@@ -27,9 +31,10 @@ class dataUser{
 const dataus = new dataUser();
 
 ( async ()=> {
-    // const get = dataus.userID(6)
+    // const get = await dataus.userID(6)
+    // console.log(get)
 
-    // const post = dataus.userCreate(
+    // const post = await dataus.userCreate(
     //     {
     //         UserName: 'John3',
     //         UserSurname: 'Doe3',
@@ -43,25 +48,23 @@ const dataus = new dataUser();
     //     },
     // );
 
-    // const des = dataus.DeleteString(1)
+    // const des = await dataus.DeleteString(1)
 
-//     const findAll = dataus.FindAllStrings({
+//     const findAll = await dataus.FindAllStrings({
 // where:{
 //     UserName: 'Paul',
 //     UserEMail: 'John3'
 // }
 //     })
 
-   const updg = dataus.UpdateString(
+   const updg = await dataus.UpdateString(
        { UserName:"Paul5"},
        {
            where: {
-               id: 6
+               id: 2
            }
        }
    )
-
-    console.log(updg)
 
 })();
 
