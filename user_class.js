@@ -9,92 +9,42 @@ const {User} = require('./models/index.js')
 
 
 class dataUser{
-       id;  // не передаются данные в id. если _id, то все выводится ок
-    // name;
-    // surname;
-    // patronymic;
-    // telnumber;
-    // login;
-    // email;
-    // license;
+
+     constructor(name, surname, patronymic, telnumber, login, email, license) {
+    this.name = name,
+    this.surname = surname,
+    this.patronymic = patronymic,
+    this.telnumber = telnumber,
+    this.login = login,
+    this.email = email,
+    this.license = license;
+     };
 
 
-    async getId(i) {
-        return User.findByPk(i)
-    }
+        insert(){
+    User.create({
+        UserName: this.name,
+        UserSurname: this.surname,
+        UserPatronymic: this.patronymic,
+        UserTelNumber: this.telnumber,
+        UserLogin: this.login,
+        UserEMail: this.email,
+        UserLicense: this.license,
+    })
+        }
 
-    set id(idd){
-    this.id = idd
-        console.log(idd)
-    }
-
-    // set name(nm){
-    //     this.name = nm
-    //
-    // };
-    //
-    // set surname(sn){
-    //     this.surname = sn
-    // };
-    //
-    // set patronymic(pn){
-    //     this.patronymic = pn
-    // };
-    //
-    // set telnumber(tn){
-    //     this.telnumber = tn
-    // };
-    //
-    // set login(lg){
-    //     this.login = lg
-    // };
-    //
-    // set email(ml){
-    //     this.email = ml
-    // };
-    //
-    // set license(lc){
-    //     this.license = lc
-    // };
-    //
-    //
-    // cr(){
-    //   User.create({
-    //       UserName: "Jane",
-    //       UserSurname: "Doe",
-    //       UserPatronymic: "--",
-    //       UserTelNumber: "1234567891010",
-    //       UserLogin:"LOGINLog",
-    //       UserEMail:"Mylo@mylo.com",
-    //       UserLicense:"free",
-    //   }
-    //
-    //   )
-    // }
+    };
 
 
-};
+let test = new dataUser('a', 'b', 'c', 'd','e', 'f', 'g')
 
-let datauser = new dataUser();
+console.log(test, test.insert())
 
-
-async function get(){
-    const a = await datauser.getId(1)
-
-    datauser.id = a.dataValues.id;
-    // datauser.name = a.dataValues.UserName;
-    // datauser.surname = a.dataValues.UserSurname;
-    // datauser.patronymic = a.dataValues.UserPatronymic;
-    // datauser.telnumber = a.dataValues.UserTelNumber;
-    // datauser.login = a.dataValues.UserLogin;
-    // datauser.email = a.dataValues.UserEMail;
-    // datauser.license = a.dataValues.UserLicense;
-
-    // data.cr()
-}
-
-
-get()
+// async function get(){
+//     const a = await datauser.getId(1)
+// }
+//
+// get()
 
 
 // Создать - Аналог операции insert into Users values …
