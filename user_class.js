@@ -1,14 +1,21 @@
 const {User} = require('./models/index.js')
 
-// Имена класса всегда начинаются с большой буквы
-// Почему поля приватные
-// Все поля начинаются с маленькой, так же как и методы
-// Оставление консольный логов в коде, отправленном на ревью, является грубейшей небрежностью
-// Имя UserSurname избыточно. Это поле и так находится в классе User. Потом как работать с ним? User.UserSurname? Имя не годится
-
-
+let name = 'Paul5'
+let surname = 'Doe'
+let patronymic = 'example@example.com'
+let telnumber = '1234567891010'
+let login = 'loginUser'
+let email = 'loginEmail@mail.com'
+let license = 'commercial'
 
 class dataUser{
+    name;
+    surname;
+    patronymic;
+    telnumber;
+    login;
+    email;
+    license;
 
      constructor(name, surname, patronymic, telnumber, login, email, license) {
     this.name = name,
@@ -20,48 +27,100 @@ class dataUser{
     this.license = license;
      };
 
+        insert(){ //Создать - Аналог операции insert into Users values V
+            User.create({
+                UserName: this.name,
+                UserSurname: this.surname,
+                UserPatronymic: this.patronymic,
+                UserTelNumber: this.telnumber,
+                UserLogin: this.login,
+                UserEMail: this.email,
+                UserLicense: this.license,
+            })
+        };
 
-        insert(){
-    User.create({
-        UserName: this.name,
-        UserSurname: this.surname,
-        UserPatronymic: this.patronymic,
-        UserTelNumber: this.telnumber,
-        UserLogin: this.login,
-        UserEMail: this.email,
-        UserLicense: this.license,
-    })
+        deleting() { // Удалить - Аналог операции delete from Users where V
+            User.destroy({
+                where: {
+                    UserName: this.name
+                }
+            }).then((data)=>{
+                console.log(data)
+            }).catch((err)=>{
+                console.log(err)
+            })
+        };
+
+        choose(){ //Выбрать по любому из обязательных или необязательных полей - Аналог операции select * from Users where V
+            User.findAll({
+                attributes: ['UserName', 'UserLogin' ]
+            }).then((data)=>{
+                console.log(data)
+            }).catch((err)=>{
+                console.log(err)
+            })
+        };
+
+        updating(){ // Обновить данные текущего пользователя - Аналог операции update Users set … where  V
+            User.update({UserTelNumber: 1 }, {
+                where: {
+                    UserTelNumber: this.telnumber,
+                }
+            }).then((data)=>{
+                console.log(data)
+            }).catch((err)=>{
+                console.log(err)
+            })
+        };
+
+        updatingany(){ // бновить данные пользователя, выбирая по любому из полей
+           User.update({ UserSurname: "Doe2" }, {
+               where: {
+                   UserName: this.name //paul5
+               }
+           }).then((data)=>{
+               console.log(data)
+           }).catch((err)=>{
+               console.log(err)
+           })
         }
+    }
 
+let exOne = new dataUser(name, surname, patronymic, telnumber, login, email, license) // добавление, удаление
+
+// console.log(exOne.insert())
+// console.log(exOne.deleting())
+//console.log(exOne.choose())
+// console.log(exOne.updating())
+ //console.log(exOne.updatingany())
+
+
+
+
+class dataclass extends dataUser {
+
+    name;
+    telnumber;
+
+    constructor(name,telnumber ) { // перепись старого значения в super this
+        super(name, telnumber );
+        this.name = name;
+        this.telnumber = telnumber
+    }
+
+    updatedata(){
+        User.update({UserName: this.name }, {
+            where: {
+                UserTelNumber: this.telnumber
+            }
+        }).then((data)=>{
+            console.log(data)
+        }).catch((err)=>{
+            console.log(err)
+        })
     };
+}
 
+let exTwo = new dataclass('NewJohn', '12345678903' );
 
-let test = new dataUser('a', 'b', 'c', 'd','e', 'f', 'g')
-
-console.log(test, test.insert())
-
-// async function get(){
-//     const a = await datauser.getId(1)
-// }
-//
-// get()
-
-
-// Создать - Аналог операции insert into Users values …
-// Удалить - Аналог операции delete from Users where …
-// Выбрать по любому из обязательных или необязательных полей - Аналог операции select * from Users where …
-// Обновить данные текущего пользователя - Аналог операции update Users set … where …
-// Обновить данные пользователя, выбирая по любому из полей
-
-// dataValues: {
-//     id: 1,
-//         UserName: 'John',
-//         UserSurname: 'Doe',
-//         UserPatronymic: 'example@example.com',
-//         UserTelNumber: '1234567890',
-//         UserLogin: 'loginUser',
-//         UserEMail: 'loginEmail@mail.com',
-//         UserLicense: 'commercial',
-//         createdAt: 2023-01-30T15:43:28.000Z,
-//         updatedAt: 2023-01-30T15:43:28.000Z
-// }
+exTwo.updatedata()
