@@ -27,7 +27,7 @@ class dataUser{
     this.license = license;
      };
 
-        insert(){ //Создать - Аналог операции insert into Users values V
+        insert(){ //Создать - Аналог операции insert into Users values. Добавление новых строк
             User.create({
                 UserName: this.name,
                 UserSurname: this.surname,
@@ -37,7 +37,20 @@ class dataUser{
                 UserEMail: this.email,
                 UserLicense: this.license,
             })
-        };
+                .then(()=>{ User.findAll({attributes: ['id', 'UserName', 'UserSurname', 'UserPatronymic', 'UserTelNumber']}  // вывод массива строк из таблицы после добавления новой строки
+                ).then((data)=>{
+                    console.log(data)
+                }).catch((err)=>{
+                    console.log(err)
+                })
+                })}
+
+
+
+
+
+
+
 
         deleting() { // Удалить - Аналог операции delete from Users where V
             User.destroy({
@@ -51,7 +64,7 @@ class dataUser{
             })
         };
 
-        choose(){ //Выбрать по любому из обязательных или необязательных полей - Аналог операции select * from Users where V
+        choose(){ //Выбрать по любому из обязательных или необязательных полей - Аналог операции select * from Users where V[]
             User.findAll({
                 attributes: ['UserName', 'UserLogin' ]
             }).then((data)=>{
@@ -88,39 +101,40 @@ class dataUser{
 
 let exOne = new dataUser(name, surname, patronymic, telnumber, login, email, license) // добавление, удаление
 
-// console.log(exOne.insert())
+exOne.insert()
 // console.log(exOne.deleting())
 //console.log(exOne.choose())
 // console.log(exOne.updating())
  //console.log(exOne.updatingany())
 
 
-
-
-class dataclass extends dataUser {
-
-    name;
-    telnumber;
-
-    constructor(name,telnumber ) { // перепись старого значения в super this
-        super(name, telnumber );
-        this.name = name;
-        this.telnumber = telnumber
-    }
-
-    updatedata(){
-        User.update({UserName: this.name }, {
-            where: {
-                UserTelNumber: this.telnumber
-            }
-        }).then((data)=>{
-            console.log(data)
-        }).catch((err)=>{
-            console.log(err)
-        })
-    };
-}
-
-let exTwo = new dataclass('NewJohn', '12345678903' );
-
-exTwo.updatedata()
+//
+//
+// class dataclass extends dataUser {
+//
+//     name;
+//     telnumber;
+//
+//     constructor(name,telnumber ) { // перепись старого значения в super this
+//         super(name, telnumber );
+//         this.name = name;
+//         this.telnumber = telnumber
+//     }
+//
+//     updatedata(){
+//         User.update({UserName: this.name }, {
+//             where: {
+//                 UserTelNumber: this.telnumber
+//             }
+//         }).then((data)=>{
+//             console.log(data)
+//         }).catch((err)=>{
+//             console.log(err)
+//         })
+//     };
+// }
+//
+// let exTwo = new dataclass('NewJohn', '12345678903' );
+// console.log(exTwo)
+//
+//  exTwo.updatedata()
