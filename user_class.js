@@ -8,7 +8,7 @@ let login = 'loginUser'
 let email = 'loginEmail@mail.com'
 let license = 'commercial'
 
-class dataUser{
+class  DataUser{
     name;
     surname;
     patronymic;
@@ -37,7 +37,7 @@ class dataUser{
                 UserEMail: this.email,
                 UserLicense: this.license,
             })
-                .then(()=>{ User.findAll({attributes: ['id', 'UserName', 'UserSurname', 'UserPatronymic', 'UserTelNumber']}  // вывод массива строк из таблицы после добавления новой строки
+                .then(()=>{ User.findAll({where: {}}  // вывод массива строк из таблицы после добавления новой строки
                 ).then((data)=>{
                     console.log(data)
                 }).catch((err)=>{
@@ -99,7 +99,7 @@ class dataUser{
         }
     }
 
-let exOne = new dataUser(name, surname, patronymic, telnumber, login, email, license) // добавление, удаление
+let exOne = new DataUser(name, surname, patronymic, telnumber, login, email, license) // добавление, удаление
 
 exOne.insert()
 // console.log(exOne.deleting())
