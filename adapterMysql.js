@@ -2,10 +2,11 @@ const {User} = require('./models/index.js')
 
 class ReqDB{
 
-    updating(){ // Обновить данные текущего пользователя - Аналог операции update Users set … where  V
-        User.update({UserTelNumber: 1 }, {
+
+    updating(tel){ // Обновить данные текущего пользователя - Аналог операции update Users set … where  V
+        User.update({UserTelNumber: 1111111111111111111 }, {
             where: {
-                UserTelNumber: this.tel,
+                UserTelNumber: tel
             }
         }).then((data)=>{
             console.log(data)
@@ -14,9 +15,13 @@ class ReqDB{
         })
     };
 
+    updating(tel){
+        console.log(tel)
+    }
+
 }
 
-
+let a = new ReqDB();
 
 module.exports ={
     ReqDB

@@ -1,4 +1,4 @@
-const Req = require("./adapterMysql.js")
+
 const {ReqDB} = require("./adapterMysql");
 
 class userData{
@@ -8,22 +8,24 @@ class userData{
         this.tel = tel
     }
 
-    updating(){ // Обновить данные текущего пользователя - Аналог операции update Users set … where  V
-      new ReqDB(this.tel)
+    updating1(){
+
     };
 
 }
 
-let b = new userData('1234567890');
+let b = new userData();
 
-console.log(b.updating())
-
-
+console.log(b.updating1('1234567890'))
 
 
 
 
 
+
+// передача в адаптер осуществляется путем: функция(значение)
+
+// что если создать тут копию класса и передавать выведенное тут значение.
 
 
 
