@@ -15,12 +15,18 @@ class ConnectDB {
             }
     }
 
-
     // async connsectionMongoDB(){
     // для будущего подключения MongoDB ?
     // }
 
 }
-
-let a = new ConnectDB()
+let a  = new ConnectDB();
 console.log(a.connsectionMySQL())
+
+module.exports={
+    ConnectDB
+}
+
+
+
+
