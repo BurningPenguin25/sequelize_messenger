@@ -15,14 +15,11 @@ export class Search{
 }
 
 
-
-
-
 export class Adapter{
     sear
 
     constructor(search) {
-        this.sear = search
+        this.sear = search // или this.sear = new Search() ?
     }
 
     adaptMeth(word){
