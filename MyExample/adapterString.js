@@ -7,6 +7,6 @@ import {stringClass} from "./stringClass.js";
     }
 
     string(name, secondname){
-        return this.str.stringName(name, secondname) // adapter имя: name: Павел, secname: Боднарь, фамилия: undefined
+        return this.str.stringName(name, secondname) // простой шаблон с переменными
     }
 }
