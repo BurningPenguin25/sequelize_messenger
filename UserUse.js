@@ -1,24 +1,29 @@
 
-const {ReqDB} = require("./adapterMysql");
 
-class userData{
-    tel
+class UserData{
+    oldtel
+    newtel
 
-    constructor(tel) {
-        this.tel = tel
+    constructor(oldtel, newtel) {
+        this.oldtel = oldtel
+        this.newtel = newtel
     }
 
-    updating1(){
-
+    UserOldTelNumber(){
+       return this.oldtel
     };
+
+    UserNewTelNumber(){
+        return this.newtel
+    }
 
 }
 
-let b = new userData();
-
-console.log(b.updating1('1234567890'))
 
 
+module.exports = {
+    UserData
+}
 
 
 
