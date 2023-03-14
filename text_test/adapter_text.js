@@ -1,20 +1,19 @@
 
-const Search = require('./class_text.js').Search // wtf???
+//const Search = require('./class_text.js').Search // wtf???
 //import Search from './class.js'
 
 class Adapter{
 
-    constructor(search) {
-        this.search = search
+    constructor(sear) {
+        this.sear = sear
     }
 
-    adaptMeth(word){
-        return this.search.words(word)
+    adaptMeth(){
+return this.sear.text //
     }
 
 }
 
-let sear = new Search('text', 'word')
-
-let sea = new Adapter(sear)
-console.log(sea.adaptMeth())
+module.exports={
+Adapter
+}

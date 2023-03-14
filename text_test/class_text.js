@@ -1,21 +1,22 @@
 
+const Adapter = require('./adapter_text.js').Adapter
+
 class Search{
 
-    constructor(text, word){
+    constructor(text){
         this.text = text
-        this.word = word
     }
 
     words(){
-        return this.text + ': метод text'
-    }
-
-    texts(){
-        return this.word  + ' метод word'
+        return  'мухоморы' + this.text + 'грибы'
     }
 
 }
 
-module.exports ={
-    Search
-}
+
+let sear = new Search(' - ядовитые ')
+let adapt = new Adapter(sear)
+
+console.log(adapt.adaptMeth())
+console.log(sear.words())
+

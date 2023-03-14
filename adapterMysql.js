@@ -1,5 +1,5 @@
 const {User} = require('./models/index.js')
-const UserData = require('./UserUse').UserData
+const UserData = require('./UserUse').UserData // .UserData wtf?
 
 class ReqDB{
 
