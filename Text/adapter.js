@@ -1,16 +1,18 @@
+// const Search = require('./
+import Search from './class.js'
 
-export class Adapter{
+export default class Adapter{
 
     constructor(search) {
         this.search = search
     }
 
-    adaptMeth(){
-        return this.search.word()
+    adaptMeth(word){
+        return this.search.words(word)
     }
 
 }
 
-let searchAdapter = new Adapter(search);
-
-console.log(searchAdapter.adaptMeth())
+let sear = new Search('text', 'word')
+let sea = new Adapter(sear)
+console.log(sea.adaptMeth())

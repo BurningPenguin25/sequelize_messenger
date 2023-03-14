@@ -1,34 +1,41 @@
-export class Search{
+class Search{
+
     constructor(text, word){
-        this.text = text
+        //this.text = text
         this.word = word
     }
 
-    word(){
-        return this.text
-    }
-
-    text(){
+    words(){
         return this.word
     }
 
+    // texts(){
+    //     return this.text
+    // }
 }
 
 
-export class Adapter{
-    sear
+
+
+class Adapter{
 
     constructor(search) {
-        this.sear = search // или this.sear = new Search() ?
+        this.search = search;
+        this.wordword = this.search.words()
+        //this.texttext = this.search.texts()
     }
 
-    adaptMeth(word){
-        return this.sear.word(word)
+    adaptMeth1(){
+        return this.wordword
     }
+
+    // adaptMeth2(){
+    //     return this.texttext
+    // }
 
 }
 
-let search = new Search("текст", "слово");
+let sear = new Search('text', 'word')
+let sea = new Adapter(sear)
+console.log(sea.adaptMeth1())
 
-let searchAdapter = new Adapter(search);
-console.log(searchAdapter.adaptMeth())

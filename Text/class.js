@@ -1,25 +1,18 @@
 
-export class Search{
+export default class Search{
+
     constructor(text, word){
         this.text = text
         this.word = word
     }
 
-    word(){
-        return this.text
+    words(){
+        return this.text + ': метод text'
     }
 
-    text(){
-        return this.word
+    texts(){
+        return this.word  + ' метод word'
     }
 
 }
-
-
-
-
-
-
-
-let search = new Search("текст", "слова");
 
