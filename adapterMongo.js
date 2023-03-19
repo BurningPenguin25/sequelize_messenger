@@ -12,33 +12,37 @@ class AdapterMongo {
 
     async Create(){
 
-        console.log(this.document)
-
-        // await client
-        //     .db('Movies')
-        //     .collection('MovieCollection')
-        //     .insertOne(this.document)
-        //     .then(()=>{
-        //         console.log('Добавлено успешно')
-        //     }).catch((err)=>{
-        //         console.log('Ошибка при добавлении', err)
-        //     })
+        await client
+            .db('Movies')
+            .collection('MovieCollection')
+            .insertOne(this.document)
+            .then(()=>{
+                console.log('Добавлено успешно')
+            }).catch((err)=>{
+                console.log('Ошибка при добавлении', err)
+            })
 
         await client.close()
     }
 
-    // async update(){
-    //     await client
-    //         .db('Movies')
-    //         .collection('MovieCollection')
-    //         .insertOne(newDocument)
-    //         .then(()=>{
-    //             console.log('Добавлено успешно')
-    //         }).catch((err)=>{
-    //             console.log('Ошибка при добавлении', err)
-    //         })
-    //     await client.close()
-    // }
+
+
+
+    async Find(){
+
+        await client
+            .db('Movies')
+            .collection('MovieCollection')
+            .findOne(this.document)
+            .then((data)=>{
+                console.log('Найдено успешно', data)
+            }).catch((err)=>{
+                console.log('Не найдено', err)
+            })
+
+        await client.close()
+    }
+
     //
     // async find(){
     //     await client
@@ -70,7 +74,7 @@ class AdapterMongo {
 }
 
 // let a = new AdapterMongo();
-// console.log(a.Create())
+// console.log(a.Find())
 
 module.exports ={
     AdapterMongo
