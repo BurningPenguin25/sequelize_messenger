@@ -1,8 +1,9 @@
-const { Sequelize } = require('sequelize');
+const  Sequelize  = require('sequelize');
+const MongoClient = require("mongodb").MongoClient
 
 class ConnectDB {
 
-   async  connsectionMySQL(){
+   async  connectionMySQL(){
         const sequelize = new Sequelize('sequelize_messenger', 'root', 'BurningPenguin25b', {
             host: 'localhost',
             dialect: 'mysql',
@@ -15,13 +16,20 @@ class ConnectDB {
             }
     }
 
-    // async connsectionMongoDB(){
-    // для будущего подключения MongoDB ?
-    // }
+    async connectionMongoDB(){
+        await MongoClient.connect('mongodb://localhost:27017/Movies')
+            .then(()=>{
+                console.log('mongoDB: Connected succesfuly')
+            }).catch(()=>{
+                console.log('mongoDB: Connected unsuccesfuly')
+            })
+    }
 
 }
+
 let a  = new ConnectDB();
-console.log(a.connsectionMySQL())
+console.log(a.connectionMySQL())
+console.log(a.connectionMongoDB())
 
 module.exports={
     ConnectDB

@@ -20,3 +20,4 @@ let adapt = new Adapter(sear)
 console.log(adapt.adaptMeth())
 console.log(sear.words())
 
+
