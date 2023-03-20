@@ -1,5 +1,4 @@
 const  Sequelize  = require('sequelize');
-const MongoClient = require("mongodb").MongoClient
 
 class ConnectMySQL {
 
@@ -16,24 +15,11 @@ class ConnectMySQL {
             }
     }
 
-    // async connectionMongoDB(){
-    //     await MongoClient.connect('mongodb://localhost:27017/Movies')
-    //         .then(()=>{
-    //             console.log('mongoDB: Connected succesfuly')
-    //         }).catch(()=>{
-    //             console.log('mongoDB: Connected unsuccesfuly')
-    //         })
-    // }
-
 }
 
 let a  = new ConnectMySQL();
 console.log(a.connectionMySQL())
-// console.log(a.connectionMongoDB())
 
-module.exports={
-    ConnectDB: ConnectMySQL
-}
 
 
 
