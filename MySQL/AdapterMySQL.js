@@ -2,14 +2,10 @@ const {User} = require('../models')
 
 class AdapterMySQL{
 
-    constructor(data) {
-        this.data = data
-    }
-
-    Update(){
-       User.update({UserTelNumber: this.data.newtel }, {
+    Update(oldtel, newtel){
+       User.update({UserTelNumber: newtel }, {
             where: {
-                UserTelNumber: this.data.oldtel
+                UserTelNumber: oldtel
             }
         }).then((data)=>{
             console.log(data)
@@ -18,10 +14,10 @@ class AdapterMySQL{
         })
     };
 
-    delete(){
+    delete(userName){
         User.destroy( {
             where: {
-                UserName: this.data.userName
+                UserName: userName
             }
         }).then((data)=>{
             console.log(data)
@@ -30,10 +26,10 @@ class AdapterMySQL{
         })
     };
 
-    FindOne(){
+    FindOne(newtel){
         User.findOne( {
             where: {
-                UserTelNumber: this.data.newtel
+                UserTelNumber: newtel
             }
         }).then((data)=>{
             console.log(data)
