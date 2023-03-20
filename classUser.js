@@ -1,10 +1,10 @@
 //mysql
 const Adapters = require("./MySQL/AdapterMySQL.js").AdapterMySQL
+let b = new Adapters()
 
 //mongo
 
 class UserData{
-
     constructor(oldtel, newtel, userName) {
         this.oldtel = oldtel
         this.newtel = newtel
@@ -12,17 +12,17 @@ class UserData{
     }
 
     updateClass(){
-        let b = new Adapters()
+        //let b = new Adapters()
         b.Update(this.oldtel, this.newtel)
     }
 
     findClass(){
-        let b = new Adapters()
+        //let b = new Adapters()
         b.FindOne(this.oldtel, this.newtel)
     }
 
     deleteClass(){
-        let b = new Adapters()
+        //let b = new Adapters()
         b.delete(this.userName)
     }
 
