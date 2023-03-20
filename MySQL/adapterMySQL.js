@@ -1,5 +1,5 @@
 const {User} = require('../models')
-const UserData = require('./UserUse').UserData // .UserData wtf?
+const UserData = require('./classUser').UserData // .UserData wtf?
 
 class ReqDB{
 
