@@ -1,6 +1,8 @@
-const AdapterUpdate = require("./adapterUpdate.js").AdapterUpdate
-const AdapterFindOne = require("./adapterFindOne.js").AdapterFindOne
-const AdapterDelete = require("./adapterDelete.js").AdapterDelete
+//mysql
+const Adapters = require("./AdapterMySQL.js").AdapterMySQL
+
+
+//mongo
 
 class UserData{
 
@@ -18,19 +20,12 @@ class UserData{
 
 let a = new UserData('555', '2222222222', 'Paul5' );
 
-
 //UpdateData
-// let b = new AdapterUpdate(a)
-// console.log(b.Update())
+let b = new Adapters(a)
+console.log(b.Update())
+console.log(b.FindOne())
+//console.log(b.delete())
 
-
-// FindData
-// let c = new AdapterFindOne(a)
-// console.log(c.FindOne())
-
-// DeleteData
-let d = new AdapterDelete(a)
-console.log(d.delete())
 
 
 
