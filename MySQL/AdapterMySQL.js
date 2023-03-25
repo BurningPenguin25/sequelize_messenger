@@ -37,7 +37,6 @@ class AdapterMySQL{
             console.log(err)
         })
     };
-
 }
 
 module.exports = {
